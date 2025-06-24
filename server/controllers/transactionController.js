@@ -21,23 +21,34 @@ exports.createTransaction = async (req, res) => {
     }
 }
 
-exports.getTransaction = async (req, res) => {
-    try {
-        const { category, start, end } = req.query;
-        let filter = { userId: req.userId };
-        if (category) filter.category = category;
-        if (start || end) {
-            filter.date = {}
-            if (start) filter.date.$gte = new Date(start);
-            if (end) filter.date.$lte = new Date(end);
-        }
-        const transactions = await Transaction.find(filter);
-        res.status(200).json({ transactions });
-        
-    } catch (error) {
-        res.status(500).json({ message: 'retrieving transactions failed', error });
+exports.getTransactions = async (req, res) => {
+   try {
+    const transactions = await Transaction.find({ userId: req.userId }).sort({ date: -1 });
+    res.status(200).json({ transactions });
+  } catch (error) {
+    res.status(500).json({ message: 'Fetching all transactions failed', error });
+  }
+};
+
+exports.getFilteredTransactions = async (req, res) => {
+  try {
+    const { category, startDate, endDate } = req.body;
+    let filter = { userId: req.userId };
+
+    if (category) filter.category = category;
+    if (startDate || endDate) {
+      filter.date = {};
+      if (startDate) filter.date.$gte = new Date(startDate);
+      if (endDate) filter.date.$lte = new Date(endDate);
     }
-}
+
+    const transactions = await Transaction.find(filter).sort({ date: -1 });
+    res.status(200).json({ transactions });
+  } catch (error) {
+    res.status(500).json({ message: 'Filtering transactions failed', error });
+  }
+};
+
 
 exports.editTransaction = async (req, res) => {
     try {
