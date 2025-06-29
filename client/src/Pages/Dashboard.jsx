@@ -3,6 +3,7 @@ import Chart from '../Components/Chart';
 import API from '../config/Api';
 import PieChart from '../Components/PieChart';
 import MonthlyBarChart from '../Components/MonthlyBarChart';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
     const [transactions, setTransactions] = useState([]);
@@ -60,9 +61,20 @@ const Dashboard = () => {
 
     }, [transactions]);
 
+
     return (
         <div className="min-h-screen bg-gray-100 p-6">
-            <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
+            <div className='flex justify-between items-center'>
+                <h1 className="text-2xl font-bold ">Dashboard</h1>
+                <Link to="/add/transaction"  className="text-white text-lg font-semibold px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-indigo-600 hover:to-blue-600 shadow-md hover:shadow-lg transition-all duration-300">
+                    Add New
+                </Link>
+            </div>
+            {showAlert && (
+                <div className="bg-red-100 text-red-700 p-3 rounded my-6 text-center font-semibold">
+                    🔔 Alert: You exceeded your monthly spending limit of ₹{monthlyLimit}!
+                </div>
+            )}
 
             <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-6">
                 <div className="bg-green-100 p-4 rounded shadow">
@@ -85,12 +97,6 @@ const Dashboard = () => {
                 <PieChart transactions={transactions} type="income" />
                 <PieChart transactions={transactions} type="expense" />
             </div>
-
-            {showAlert && (
-                <div className="bg-red-100 text-red-700 p-3 rounded mt-6 text-center font-semibold">
-                    🔔 Alert: You exceeded your monthly spending limit of ₹{monthlyLimit}!
-                </div>
-            )}
         </div>
     );
 

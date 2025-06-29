@@ -24,6 +24,20 @@ const PieChart = ({ transactions, type = 'expense' }) => {
         ],
     };
 
+    const options = {
+    plugins: {
+      legend: {
+        position: 'left', 
+        align: 'center',
+        labels: {
+          boxWidth: 20,
+          padding: 15,
+        },
+      },
+    },
+    maintainAspectRatio: false,
+  };
+
     return (
         <div className="bg-white p-4 rounded-xl shadow w-full h-full">
             <h2 className="text-lg font-semibold text-center mb-4">
@@ -31,7 +45,7 @@ const PieChart = ({ transactions, type = 'expense' }) => {
             </h2>
              <div className="h-[180px] flex justify-center">
                  {Object.keys(categoryTotals).length > 0 ? (
-                <Pie data={data} />
+                <Pie data={data} options={options}/>
             ) : (
                 <p className="text-gray-500 text-center">No {type} data to display</p>
             )}

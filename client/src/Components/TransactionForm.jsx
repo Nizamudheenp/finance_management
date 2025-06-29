@@ -33,51 +33,64 @@ const TransactionForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow max-w-md mx-auto mt-8">
-      <h2 className="text-xl font-bold mb-4">Add Transaction</h2>
-      {error && <p className="text-red-500 mb-2">{error}</p>}
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white rounded-2xl shadow-lg px-8 py-6 space-y-4"
+    >
+      <h2 className="text-2xl font-bold text-blue-800 text-center mb-2">Add Transaction</h2>
+      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
       <input
         type="text"
         name="title"
-        placeholder="Title"
+        placeholder="Transaction Title"
         value={form.title}
         onChange={handleChange}
-        className="mb-3 w-full p-2 border rounded"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
       />
+
       <input
         type="number"
         name="amount"
-        placeholder="Amount"
+        placeholder="Amount (₹)"
         value={form.amount}
         onChange={handleChange}
-        className="mb-3 w-full p-2 border rounded"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
       />
+
       <select
         name="type"
         value={form.type}
         onChange={handleChange}
-        className="mb-3 w-full p-2 border rounded"
+        className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
       >
         <option value="expense">Expense</option>
         <option value="income">Income</option>
       </select>
+
       <input
         type="text"
         name="category"
-        placeholder="Category"
+        placeholder="Category (e.g., Food, Rent)"
         value={form.category}
         onChange={handleChange}
-        className="mb-3 w-full p-2 border rounded"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
       />
+
       <input
         type="date"
         name="date"
         value={form.date}
         onChange={handleChange}
-        className="mb-3 w-full p-2 border rounded"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
       />
-      <button className="bg-blue-500 text-white w-full py-2 rounded">Add</button>
+
+      <button
+        type="submit"
+        className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition"
+      >
+        Add Transaction
+      </button>
     </form>
   );
 };

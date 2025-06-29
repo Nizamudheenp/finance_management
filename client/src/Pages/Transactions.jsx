@@ -51,7 +51,7 @@ const Transactions = () => {
   };
 
   const handleEdit = (transaction) => {
-    navigate(`/edit/${transaction._id}`, { state: transaction });
+    navigate(`/edit/transactions/${transaction._id}`, { state: transaction });
   };
 
   useEffect(() => {
