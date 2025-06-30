@@ -64,7 +64,7 @@ const Dashboard = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between items-center py-2'>
                 <h1 className="text-2xl font-bold ">Dashboard</h1>
                 <Link to="/add/transaction"  className="text-white text-lg font-semibold px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-indigo-600 hover:to-blue-600 shadow-md hover:shadow-lg transition-all duration-300">
                     Add New

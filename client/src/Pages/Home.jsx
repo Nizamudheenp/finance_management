@@ -1,4 +1,8 @@
 import { Link } from 'react-router-dom';
+import budgetImg from "../assets/budget.jpg"
+import chartImg from '../assets/chart.jpg'
+import dashboardImg from '../assets/dashboard-preview.jpg';
+import trackImg from '../assets/track.jpg'
 
 const Home = () => {
   return (
@@ -33,17 +37,17 @@ const Home = () => {
               {
                 title: "Smart Budgeting",
                 desc: "Plan and manage your monthly spending effectively with flexible budgeting tools.",
-                img: "src/assets/budget.jpg",
+                img: budgetImg,
               },
               {
                 title: "Interactive Charts",
                 desc: "Visualize your income vs expenses with real-time charts and trends.",
-                img: "src/assets/chart.jpg",
+                img: chartImg,
               },
               {
                 title: "Track Everything",
                 desc: "Log, edit, and categorize every transaction for total control over your finances.",
-                img: "src/assets/track.jpg",
+                img: trackImg,
               },
             ].map((feature, i) => (
               <div key={i} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
@@ -65,7 +69,7 @@ const Home = () => {
       <section className="py-20 px-6 bg-gray-100">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <img
-            src="src/assets/dashboard-preview.jpg"
+            src={dashboardImg}
             alt="Dashboard Preview"
             className="w-full md:w-1/2 rounded-lg shadow-xl"
           />

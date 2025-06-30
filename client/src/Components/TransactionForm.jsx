@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../config/Api';
+import { toast } from 'sonner';
 
 const TransactionForm = () => {
   const [form, setForm] = useState({
@@ -27,6 +28,7 @@ const TransactionForm = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate('/dashboard');
+      toast.success('Transaction added!');
     } catch (err) {
       setError('Failed to add transaction');
     }

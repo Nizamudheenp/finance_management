@@ -8,14 +8,15 @@ import AddTransaction from "./Pages/AddTransaction";
 import Transactions from "./Pages/Transactions";
 import EditTransaction from "./Pages/EditTransaction";
 import Navbar from "./Components/Navbar";
+import {Toaster} from 'sonner';
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100 overflow-x-hidden">
         <Navbar />
-
         <main className="px-4 md:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
+          <Toaster richColors position="top-right" />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

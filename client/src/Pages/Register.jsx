@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import API from '../config/Api';
+import { toast } from 'sonner';
 
 const Register = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -29,6 +30,7 @@ const Register = () => {
     try {
       const res = await API.post('/auth/register', formData);
       localStorage.setItem('token', res.data.token);
+      toast.success('Registration successful!')
       navigate('/dashboard');
     } catch (error) {
       setError(error.response?.data?.message || 'Registration failed');

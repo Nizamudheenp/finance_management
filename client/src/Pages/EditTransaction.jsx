@@ -1,6 +1,7 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import API from '../config/Api';
+import { toast } from 'sonner';
 
 const EditTransaction = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ const EditTransaction = () => {
         },
       });
       navigate('/transactions');
+      toast.success('Transaction updated!');
     } catch (err) {
       console.error('Update failed', err);
     }

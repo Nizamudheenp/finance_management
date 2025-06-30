@@ -3,6 +3,7 @@ import API from '../config/Api';
 import FilterBar from '../Components/FilterBar';
 import TransactionList from '../Components/TransactionList';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
@@ -44,6 +45,7 @@ const Transactions = () => {
       await API.delete(`/transactions/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      toast('transaction deleted');
       fetchAllTransactions(); 
     } catch (err) {
       console.error('Failed to delete transaction', err);
